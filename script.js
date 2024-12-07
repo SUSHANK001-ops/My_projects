@@ -1,8 +1,7 @@
-// Function to get the current time of day and display a greeting
 function getGreeting() {
   const currentTime = new Date();
   const hours = currentTime.getHours();
-  const username = "User"; // Replace with dynamic username if needed
+  const username = "User"; 
 
   // Determine time of day
   let greeting = "";
@@ -74,7 +73,7 @@ function saveAllNotesToLocalStorage() {
     const textarea = note.querySelector('.note-content');
     const isSaved = note.querySelector('.save-icon').classList.contains('saved');
     const isFavorite = note.querySelector('.fill').classList.contains('favorite');
-    const isAtTop = note.style.order === '-1'; // Check if the note is at the top
+    const isAtTop = note.style.order === '1'; // Check if the note is at the top
     return { content: textarea.value, saved: isSaved, favorite: isFavorite, atTop: isAtTop };
   });
 
