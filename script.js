@@ -4,12 +4,11 @@ document.addEventListener('DOMContentLoaded', () => {
   loadNotes();
 });
 
-// Add Note functionality
 function createNote(content = '', creationTime = null) {
   const note = document.createElement('div');
   note.classList.add('note');
   
-  // If creationTime is not provided, set the current time.
+  
   const timeString = creationTime || new Date().toLocaleString();
 
   note.innerHTML = ` 
@@ -29,7 +28,7 @@ function createNote(content = '', creationTime = null) {
 
   document.querySelector('.notes').prepend(note);
 
-  // Event listeners for the icons
+  
   note.querySelector('.right_e .fill').addEventListener('click', () => toggleFavorite(note));
   note.querySelector('.left_e .save-icon').addEventListener('click', () => saveNote(note));
   note.querySelector('.right_e .ti-trash').addEventListener('click', () => deleteNote(note));
@@ -56,7 +55,7 @@ function saveAllNotesToLocalStorage() {
   const notes = document.querySelectorAll('.note');
   const notesData = Array.from(notes).map(note => {
     const textarea = note.querySelector('.note-content');
-    const noteTime = note.querySelector('.note-time').textContent;  // Get the displayed time
+    const noteTime = note.querySelector('.note-time').textContent;  
     const isSaved = note.querySelector('.save-icon').classList.contains('saved');
     const isFavorite = note.querySelector('.fill').classList.contains('favorite');
     return { content: textarea.value, saved: isSaved, favorite: isFavorite, createdAt: noteTime };
@@ -68,7 +67,7 @@ function saveAllNotesToLocalStorage() {
 function loadNotes() {
   const notes = JSON.parse(localStorage.getItem('stickyNotes') || '[]');
   notes.forEach(noteData => {
-    // Pass the creation time (createdAt) to the createNote function
+  
     createNote(noteData.content, noteData.createdAt);
   });
 }
